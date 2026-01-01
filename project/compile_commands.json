@@ -10,17 +10,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_arena.o",
-      "core/opium_arena.c"
+      "../build/obj/src/core/opium_network.o",
+      "src/core/opium_network.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_arena.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_arena.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_network.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_network.o"
   },
   {
     "arguments": [
@@ -33,17 +34,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_mutex.o",
-      "core/opium_mutex.c"
+      "../build/obj/src/core/opium.o",
+      "src/core/opium.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_mutex.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_mutex.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium.o"
   },
   {
     "arguments": [
@@ -56,17 +58,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_thread.o",
-      "core/opium_thread.c"
+      "../build/obj/src/core/opium_string.o",
+      "src/core/opium_string.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_thread.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_thread.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_string.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_string.o"
   },
   {
     "arguments": [
@@ -79,17 +82,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_slab.o",
-      "core/opium_slab.c"
+      "../build/obj/src/core/opium_connection.o",
+      "src/core/opium_connection.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_slab.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_slab.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_connection.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_connection.o"
   },
   {
     "arguments": [
@@ -102,17 +106,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_network.o",
-      "core/opium_network.c"
+      "../build/obj/src/core/opium_arena.o",
+      "src/core/opium_arena.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_network.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_network.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_arena.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_arena.o"
   },
   {
     "arguments": [
@@ -125,17 +130,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_server.o",
-      "core/opium_server.c"
+      "../build/obj/src/core/opium_alloc.o",
+      "src/core/opium_alloc.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_server.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_server.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_alloc.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_alloc.o"
   },
   {
     "arguments": [
@@ -148,17 +154,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_event.o",
-      "core/opium_event.c"
+      "../build/obj/src/core/opium_slab.o",
+      "src/core/opium_slab.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_event.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_event.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_slab.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_slab.o"
   },
   {
     "arguments": [
@@ -171,17 +178,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_rbt.o",
-      "core/opium_rbt.c"
+      "../build/obj/src/core/opium_event.o",
+      "src/core/opium_event.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_rbt.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_rbt.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_event.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_event.o"
   },
   {
     "arguments": [
@@ -194,17 +202,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium.o",
-      "core/opium.c"
+      "../build/obj/src/core/opium_fork.o",
+      "src/core/opium_fork.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_fork.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_fork.o"
   },
   {
     "arguments": [
@@ -217,17 +226,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/app/opium_main.o",
-      "app/opium_main.c"
+      "../build/obj/src/core/opium_log.o",
+      "src/core/opium_log.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/app/opium_main.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/app/opium_main.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_log.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_log.o"
   },
   {
     "arguments": [
@@ -240,17 +250,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_connection.o",
-      "core/opium_connection.c"
+      "../build/obj/src/core/opium_mutex.o",
+      "src/core/opium_mutex.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_connection.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_connection.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_mutex.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_mutex.o"
   },
   {
     "arguments": [
@@ -263,17 +274,18 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_log.o",
-      "core/opium_log.c"
+      "../build/obj/src/core/opium_rbt.o",
+      "src/core/opium_rbt.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_log.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_log.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_rbt.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_rbt.o"
   },
   {
     "arguments": [
@@ -286,16 +298,89 @@
       "-I.",
       "-I../include",
       "-Iinclude",
+      "-I./src",
       "-pthread",
       "-Wno-unused-function",
       "-Wno-unused-variable",
       "-c",
       "-o",
-      "../build/obj/core/opium_alloc.o",
-      "core/opium_alloc.c"
+      "../build/obj/src/supervisor/opium_supervisor.o",
+      "src/supervisor/opium_supervisor.c"
     ],
-    "directory": "/home/dima/Projects/opium_project/opium/opium/project",
-    "file": "/home/dima/Projects/opium_project/opium/opium/project/core/opium_alloc.c",
-    "output": "/home/dima/Projects/opium_project/opium/opium/build/obj/core/opium_alloc.o"
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/supervisor/opium_supervisor.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/supervisor/opium_supervisor.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-fPIC",
+      "-march=native",
+      "-I.",
+      "-I../include",
+      "-Iinclude",
+      "-I./src",
+      "-pthread",
+      "-Wno-unused-function",
+      "-Wno-unused-variable",
+      "-c",
+      "-o",
+      "../build/obj/src/core/opium_thread.o",
+      "src/core/opium_thread.c"
+    ],
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/core/opium_thread.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/core/opium_thread.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-fPIC",
+      "-march=native",
+      "-I.",
+      "-I../include",
+      "-Iinclude",
+      "-I./src",
+      "-pthread",
+      "-Wno-unused-function",
+      "-Wno-unused-variable",
+      "-c",
+      "-o",
+      "../build/obj/src/worker/opium_worker.o",
+      "src/worker/opium_worker.c"
+    ],
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/worker/opium_worker.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/worker/opium_worker.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-Wall",
+      "-Wextra",
+      "-O3",
+      "-fPIC",
+      "-march=native",
+      "-I.",
+      "-I../include",
+      "-Iinclude",
+      "-I./src",
+      "-pthread",
+      "-Wno-unused-function",
+      "-Wno-unused-variable",
+      "-c",
+      "-o",
+      "../build/obj/src/master/opium_master.o",
+      "src/master/opium_master.c"
+    ],
+    "directory": "/home/user/Templates/Projects/opium_project/project",
+    "file": "/home/user/Templates/Projects/opium_project/project/src/master/opium_master.c",
+    "output": "/home/user/Templates/Projects/opium_project/build/obj/src/master/opium_master.o"
   }
 ]

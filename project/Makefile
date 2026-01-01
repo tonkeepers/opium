@@ -4,14 +4,13 @@ AR      := ar
 
 # Flags - include paths for current structure
 CFLAGS  := -Wall -Wextra -O3 -fPIC -march=native \
-           -I. -I../include -Iinclude \
-           -pthread \
-           -Wno-unused-function -Wno-unused-variable
+			  -I. -I../include -Iinclude -I./src \
+			  -pthread \
+			  -Wno-unused-function -Wno-unused-variable
 
 # Directories
-CORE_DIR     := core
-OS_DIR       := os/unix
-APP_DIR      := app
+CORE_DIR     := src/core
+OS_DIR       := src/os/unix
 INC_DIR      := ../include
 
 NOISE_DIR    := $(CORE_DIR)/noise
@@ -25,15 +24,17 @@ TARGET       := $(BIN_DIR)/project
 TARGET_LIB   := $(LIB_DIR)/libopium.a
 
 # Source files
-CORE_SRCS    := $(wildcard $(CORE_DIR)/*.c $(NOISE_DIR)/*.c)
-OS_SRCS      := $(wildcard $(OS_DIR)/*.c)
-APP_SRCS     := $(wildcard $(APP_DIR)/*.c)
+CORE_SRCS       := $(wildcard src/core/*.c)
+SUPERVISOR_SRCS := $(wildcard src/supervisor/*.c)
+MASTER_SRCS     := $(wildcard src/master/*.c)
+WORKER_SRCS     := $(wildcard src/worker/*.c)
+OS_SRCS         := $(wildcard src/os/*.c)
 
-SRCS         := $(CORE_SRCS) $(OS_SRCS) $(APP_SRCS)
+SRCS         := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS)
 OBJS         := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 # Main application file (entry point)
-MAIN_SRC     := $(APP_DIR)/opium_main.c
+MAIN_SRC     := src/supervisor/opium_supervisor.c
 
 .PHONY: all clean run debug test lib
 
