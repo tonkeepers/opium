@@ -70,12 +70,12 @@ For the [WORKER]:
 2. Supervision Module:
 - The supervisor is responsible for managing the overall health and lifecycle of the server components. It`s like an orchestrator that initializes the system and manages the state of the server (master and worker processes)
 
-3. Master Module:
-- The master is responsible for creating and supervising the worker processes. It manages their lifecycle, distributes tasks, and ensures that workers are alive and working properly.  
+   3. Master Module:
+   - The master is responsible for creating and supervising the worker processes. It manages their lifecycle, distributes tasks, and ensures that workers are alive and working properly.  
 
-4. Worker Module:
-- The worker is the individual process that does the actual work. It`s independent and can be managed by the master process, but it doesn`t have to communicate with anything other than the master.
+   4. Worker Module:
+   - The worker is the individual process that does the actual work. It`s independent and can be managed by the master process, but it doesn`t have to communicate with anything other than the master.
 
-5. OS Module:
-- This OS module is specific to the operating system you are targetting.
+   5. OS Module:
+   - This OS module is specific to the operating system you are targetting.
 

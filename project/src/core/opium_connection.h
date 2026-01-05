@@ -4,7 +4,7 @@
 #include "core/opium_core.h"
 
 struct opium_listening_s {
-   opium_socket_fd_t    fd;
+   //opium_socket_fd_t    fd;
 
    opium_connection_t  *connection;
    opium_u64_t          connection_count;
@@ -19,7 +19,7 @@ struct opium_listening_s {
 };
 
 struct opium_connection_s {
-   opium_socket_fd_t fd;
+   //opium_socket_fd_t fd;
 
    struct sockaddr  *sockaddr;
    socklen_t         socklen;

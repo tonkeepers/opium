@@ -35,6 +35,7 @@
 #include <sys/mman.h>
 #include <sys/vfs.h>       /* statfs() */
 #include <sys/utsname.h>   /* uname() */
+#include <sys/prctl.h>
 
 /* -------------------- Networking headers -------------------- */
 #include <sys/socket.h>

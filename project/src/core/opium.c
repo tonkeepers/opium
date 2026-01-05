@@ -1,5 +1,5 @@
 #include "core/opium.h"
-
+   
    int 
 opium_is_little_endian(void)
 {

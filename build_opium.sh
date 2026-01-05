@@ -2,6 +2,8 @@ cd project
 
 make clean; bear -- make -j$(proc)
 
+mv project/compile_commands.json . 
+
 echo "OUTPUT:"
 
 cd ..

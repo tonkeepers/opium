@@ -51,11 +51,7 @@ typedef struct OPIUM_IP_PORT {
    OPIUM_UNION_IP  IP;
 } OPIUM_IP_PORT;
 
-typedef struct opium_socket_s opium_socket_t;
-struct opium_socket_s {
-   opium_socket_fd_t fd;
-};
 
-opium_socket_t opium_net_socket(opium_network_t ns, opium_family family, opium_s32_t type, opium_s32_t proto);
+//opium_socket_t opium_net_socket(opium_network_t ns, opium_family family, opium_s32_t type, opium_s32_t proto);
 
 #endif /* OPIUM_NETWORK_INCLUDE_H */

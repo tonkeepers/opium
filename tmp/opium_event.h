@@ -13,8 +13,6 @@ struct opium_event_s {
    struct epoll_event     events;
    size_t                 max_events;
 
-   opium_thread_t         thread;
-   
    opium_arena_t         *arena;
    opium_log_t           *log;
 };

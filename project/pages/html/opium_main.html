@@ -35,3 +35,132 @@
     </div>
 </body>
 </html>
+
+/* DHCP TEST */
+
+   char **
+slip(char *ip, size_t *octett_count)
+{
+   size_t len = opium_strlen(ip);
+
+   printf("addres: %s, len: %zu\n", ip, len);
+
+   size_t pos = 0;
+
+   char   octet[4];
+   size_t octet_pos = 0;
+
+   size_t octet_count = 0;
+
+   opium_memzero(octet, 4);
+
+   char **octets = (char **)opium_calloc(4 * sizeof(char *), NULL);
+   if (!octets) {
+      return NULL;
+   }
+
+   while (pos <= len) {
+      char c = ip[pos];
+
+      if (c == '.' || pos == len) {
+         octet[octet_pos + 1] = '\0';
+
+         octets[octet_count] = (char *)opium_calloc(sizeof(octet_pos + 1), NULL);
+         if (!octets[octet_count]) {
+            return NULL;
+         }
+
+         opium_cpystrn(octets[octet_count], octet, octet_pos + 1);
+
+         printf("octet: %s\n", octets[octet_count]);
+
+         octet_pos = 0;
+         octet_count = octet_count + 1;
+         pos = pos + 1;
+
+         opium_memzero(octet, 4);
+
+         continue;
+      }
+
+      octet[octet_pos] = c;
+
+      octet_pos = octet_pos + 1;
+      pos = pos + 1;
+   }
+
+   *octett_count = octet_count;
+
+   return octets;
+}
+
+   opium_u32_t
+getint(char *ip)
+{
+   size_t octets_count = 0;
+   char **octets = slip(ip, &octets_count);
+
+   printf("converting to opium_u32_t\n");
+
+   opium_u32_t intoctet[octets_count];
+   opium_memzero(intoctet, sizeof(opium_u32_t) * octets_count);
+
+   for (size_t index = 0; index < octets_count; index++) {
+      intoctet[index] = atoi(octets[index]);
+
+      printf("nubmer: %ud, idnex: %zu\n", intoctet[index], index);
+   }
+
+   opium_u32_t NUMBER = 0;
+   for (size_t index = 0; index < octets_count; index++) {
+      NUMBER = NUMBER | (intoctet[index] << (8 * (3 - index)));
+   }
+
+   return NUMBER;
+}
+
+   opium_u32_t
+dhcp_start()
+{
+   char *ip = "192.168.1.2";
+   char *mask = "255.255.255.0";
+
+   opium_u32_t number_ip = getint(ip);
+   opium_u32_t number_mask = getint(mask);
+
+   printf("ip: %ud, mask: %ud\n", number_ip, number_mask);
+
+   opium_u32_t network = number_ip & number_mask;
+   opium_u32_t broadcast = network | (~number_mask);
+
+   printf("network address: %ud, broadcast: %ud\n", network, broadcast);
+
+   opium_u32_t first = network + 1;
+   opium_u32_t last = broadcast - 1;
+   opium_u32_t total = broadcast - network - 1;
+
+   printf("Генерация от %u.%u.%u.%u до %u.%u.%u.%u\n",
+           (first >> 24) & 0xFF, (first >> 16) & 0xFF,
+           (first >> 8) & 0xFF, first & 0xFF,
+           (last >> 24) & 0xFF, (last >> 16) & 0xFF,
+           (last >> 8) & 0xFF, last & 0xFF);
+
+    int count = 0;
+    for (opium_u32_t current = first; current <= last; current++) {
+        count++;
+        printf("%d: %u.%u.%u.%u\n",
+               count,
+               (current >> 24) & 0xFF,
+               (current >> 16) & 0xFF,
+               (current >> 8) & 0xFF,
+               current & 0xFF);
+    }
+
+    printf("Всего: %d адресов\n", count);
+
+
+   printf("total hosts: %ud\n", total);
+}
+
+/* DHCP TEST END */
+

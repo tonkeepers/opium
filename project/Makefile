@@ -28,7 +28,7 @@ CORE_SRCS       := $(wildcard src/core/*.c)
 SUPERVISOR_SRCS := $(wildcard src/supervisor/*.c)
 MASTER_SRCS     := $(wildcard src/master/*.c)
 WORKER_SRCS     := $(wildcard src/worker/*.c)
-OS_SRCS         := $(wildcard src/os/*.c)
+OS_SRCS         := $(wildcard src/os/unix/*.c)
 
 SRCS         := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS)
 OBJS         := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRCS))

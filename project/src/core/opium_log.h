@@ -28,6 +28,4 @@ void opium_log_err(opium_log_t *log, char *format, ...);
 void opium_log_stdout(char *format, ...);
 void opium_log_stderr(char *format, ...);
 
-
 #endif /* OPIUM_LOG_INCLUDE_H */
-
