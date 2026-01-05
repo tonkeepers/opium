@@ -1,43 +1,15 @@
 #include "core/opium_core.h"
 
-/*opium_signal_t signals[] = {
-   {
-      "reopen",
-      OPIUM_REOPEN_SIGNAL,
-      opium_signal_handler
-   },
-
-   {
-      "shutdown",
-      OPIUM_SHUTDOWN_SIGNAL,
-      opium_signal_handler
-   },
-
-   {
-      "terminate",
-      OPIUM_TERMINATE_SIGNAL,
-      opium_signal_handler
-   },
-
-   { NULL, 0, NULL }
-};
    void
-opium_process_self_init()
+opium_process_self_init(opium_signal_t *signal, opium_log_t *log)
 {
-  for (opium_s32_t index = 0; index < OPIUM_MAX_PROCESSES; index++) {
-      opium_processes[index].pid = -1;
-   }
 }
-*/
+
    opium_pid_t
-opium_process_spawn(char *name, void *data, opium_proc_func_t func, opium_s32_t respawn, opium_log_t *log)
+opium_process_spawn(char *name, void *data, opium_proc_func_t func, opium_log_t *log)
 {
    opium_s32_t      index; 
    /*
-      if (respawn >= 0) {
-      index = respawn;
-
-      } else {
       for (index = 0; index < OPIUM_MAX_PROCESSES; index++) {
       if (opium_processes[index].pid == -1) {
       break;
@@ -47,7 +19,6 @@ opium_process_spawn(char *name, void *data, opium_proc_func_t func, opium_s32_t 
       if (index == OPIUM_MAX_PROCESSES) {
       opium_log_err(log, "Limit of the processes %d was reached!\n", OPIUM_MAX_PROCESSES);
       return OPIUM_INVALID_PID;
-      }
       }
 
       opium_process_t process = opium_processes[index];
@@ -98,9 +69,9 @@ opium_process_spawn(char *name, void *data, opium_proc_func_t func, opium_s32_t 
       process.data    = data;
       process.func    = func;
       process.channel = channel;
-
-      return pid;
       */
+   //   return pid;
+   return OPIUM_RET_OK;
 }
 
    void

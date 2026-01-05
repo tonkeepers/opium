@@ -23,10 +23,6 @@
 #define OPIUM_RET_ERR  -1  /* Generic error */
 #define OPIUM_RET_FULL -2  /* Resource full / cannot allocate */
 
-#define OPIUM_REOPEN_SIGNAL    SIGUSR1
-#define OPIUM_SHUTDOWN_SIGNAL  SIGQUIT
-#define OPIUM_TERMINATE_SIGNAL SIGTERM
-
 /* Limits for optimized memcpy / memset routines */
 #define OPIUM_MEMCPY_LIMIT 2048
 #define OPIUM_MEMSET_LIMIT 2048
@@ -83,6 +79,7 @@ typedef struct opium_connection_s  opium_connection_t;
 
 /* Includes */
 #include "opium_log.h"
+#include "opium_signals.h"
 #include "opium_list.h"
 #include "opium_hashfuncs.h"
 #include "opium_string.h"

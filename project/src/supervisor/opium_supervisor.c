@@ -83,6 +83,14 @@ void sighandler_func(int signo) {
    printf("signo: %d\n", signo);
 }
 
+opium_signal_entry_t signals[] = {
+   { OPIUM_SIGNAL_REOPEN,  0, NULL, NULL },
+   { OPIUM_SIGNAL_SHUTDOWN,   0, NULL, NULL },
+   { OPIUM_SIGNAL_TERMINATE,  0, NULL, NULL },
+   { OPIUM_SIGNAL_HANGUP,     0, NULL, NULL },
+   { 0, 0, NULL, NULL }
+};
+
 int main(int argc, void *argv[]) {
    opium_s32_t ret;
 
@@ -105,9 +113,6 @@ int main(int argc, void *argv[]) {
 
    char *name = "yes";
    //opium_process_spawn(name, NULL, master_main, -1, log);
-
-   opium_memzero(argv[0], opium_strlen(argv[0]));
-   opium_cpystrn(argv[0], "hallo", 6);
 
    /* EPOLL */
 
@@ -132,6 +137,10 @@ int main(int argc, void *argv[]) {
 
    epoll_ctl(ep_fd, EPOLL_CTL_ADD, sock_fd, &event_fd);
 
+   opium_signal_t signal;
+   opium_signal_bind(&signal, signals);
+   opium_process_self_init(&signal, log);
+
    /* sig */
 
 
@@ -145,13 +154,6 @@ int main(int argc, void *argv[]) {
       };
       */
 
-   struct sigaction sa;
-
-   sa.sa_handler = sighandler_func;
-   sigemptyset(&sa.sa_mask);
-   sa.sa_flags = 0;
-
-   sigaction(SIGTERM, &sa, NULL);
 
    while (1) {
 

@@ -1,13 +1,7 @@
-cd project 
-
-make clean; bear -- make -j$(proc)
-
-mv project/compile_commands.json . 
+make clean; compiledb make -j$(proc)
 
 echo "OUTPUT:"
 
-cd ..
-
-./build/bin/project -h
+./project/build/bin/project -h
 
 echo "OUTPUT END!"
