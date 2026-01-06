@@ -102,7 +102,12 @@ typedef struct opium_process_s     opium_process_t;
 #include "os/unix/opium_whatsapp.h"
 #include "os/unix/opium_channel.h"
 #include "os/unix/opium_signal.h"
-#include "os/unix/opium_process.h"
+
+#include "os/unix/process/opium_process_channel.h"
+#include "os/unix/process/opium_process_control.h"
+#include "os/unix/process/opium_process_pedigree.h"
+#include "os/unix/process/opium_process_signal.h"
+#include "os/unix/process/opium_process.h"
 
 #elif
 

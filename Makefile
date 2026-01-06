@@ -5,10 +5,13 @@ AR      := ar
 # Directories
 PROJECT_DIR  := $(abspath project)
 CORE_DIR     := $(PROJECT_DIR)/src/core
+
 OS_DIR       := $(PROJECT_DIR)/src/os/unix
-SUPERVISOR_DIR := $(PROJECT_DIR)/src/supervisor
-MASTER_DIR     := $(PROJECT_DIR)/src/master
-WORKER_DIR     := $(PROJECT_DIR)/src/worker
+UNIX_PROCESS_DIR       := $(PROJECT_DIR)/src/os/unix/process
+
+SUPERVISOR_DIR := $(PROJECT_DIR)/src/runtime/execute
+MASTER_DIR     := $(PROJECT_DIR)/src/runtime/master
+WORKER_DIR     := $(PROJECT_DIR)/src/runtime/worker
 INC_DIR      := $(PROJECT_DIR)/include
 OBJ_DIR      := $(PROJECT_DIR)/build/obj
 BIN_DIR      := $(PROJECT_DIR)/build/bin
@@ -30,8 +33,9 @@ SUPERVISOR_SRCS := $(wildcard $(SUPERVISOR_DIR)/*.c)
 MASTER_SRCS     := $(wildcard $(MASTER_DIR)/*.c)
 WORKER_SRCS     := $(wildcard $(WORKER_DIR)/*.c)
 OS_SRCS         := $(wildcard $(OS_DIR)/*.c)
+PROCESS_SRCS    := $(wildcard $(UNIX_PROCESS_DIR)/*.c)
 
-SRCS := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS)
+SRCS := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS) $(PROCESS_SRCS)
 OBJS := $(SRCS:$(PROJECT_DIR)/src/%.c=$(OBJ_DIR)/%.o)
 
 # Main application file (entry point)
