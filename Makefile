@@ -4,50 +4,36 @@ AR      := ar
 
 # Directories
 PROJECT_DIR  := $(abspath project)
+SRC_DIR      := $(PROJECT_DIR)/src
 CORE_DIR     := $(PROJECT_DIR)/src/core
-
 OS_DIR       := $(PROJECT_DIR)/src/os/unix
-UNIX_PROCESS_DIR       := $(PROJECT_DIR)/src/os/unix/process
-UNIX_PROCESS_DIR1       := $(PROJECT_DIR)/src/os/unix/process/entrails
-
-SUPERVISOR_DIR := $(PROJECT_DIR)/src/runtime/execute
-MASTER_DIR     := $(PROJECT_DIR)/src/runtime/master
-WORKER_DIR     := $(PROJECT_DIR)/src/runtime/worker
 INC_DIR      := $(PROJECT_DIR)/include
 OBJ_DIR      := $(PROJECT_DIR)/build/obj
 BIN_DIR      := $(PROJECT_DIR)/build/bin
 LIB_DIR      := $(PROJECT_DIR)/build/lib
 
-CFLAGS  := -Wall -Wextra -O3 -fPIC -march=native -D_GNU_SOURCE\
+# Find ALL C source files recursively
+SRCS := $(shell find $(SRC_DIR) -type f -name '*.c')
+OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Flags
+CFLAGS  := -Wall -Wextra -O3 -fPIC -march=native -D_GNU_SOURCE \
            -I$(PROJECT_DIR) \
-           -I$(PROJECT_DIR)/include \
-           -I$(PROJECT_DIR)/src \
+           -I$(INC_DIR) \
+           -I$(SRC_DIR) \
            -pthread \
-           -Wno-unused-function -Wno-unused-variable
+           -Wno-unused-function \
+           -Wno-unused-variable
+
 # Targets
-TARGET       := $(BIN_DIR)/project
+TARGET       := $(BIN_DIR)/opium
 TARGET_LIB   := $(LIB_DIR)/libopium.a
 
-# Source files
-CORE_SRCS       := $(wildcard $(CORE_DIR)/*.c)
-SUPERVISOR_SRCS := $(wildcard $(SUPERVISOR_DIR)/*.c)
-MASTER_SRCS     := $(wildcard $(MASTER_DIR)/*.c)
-WORKER_SRCS     := $(wildcard $(WORKER_DIR)/*.c)
-OS_SRCS         := $(wildcard $(OS_DIR)/*.c)
-PROCESS_SRCS    := $(wildcard $(UNIX_PROCESS_DIR)/*.c)
-PROCESS_SRCS1    := $(wildcard $(UNIX_PROCESS_DIR1)/*.c)
-
-SRCS := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS) $(PROCESS_SRCS) $(PROCESS_SRCS1)
-OBJS := $(SRCS:$(PROJECT_DIR)/src/%.c=$(OBJ_DIR)/%.o)
-
-# Main application file (entry point)
-MAIN_SRC     := $(SUPERVISOR_DIR)/opium_supervisor.c
-
-.PHONY: all clean run debug test lib
+.PHONY: all clean run debug test lib help tree bear
 
 all: $(TARGET)
 
-# Static library target (core only)
+# Static library target
 lib: $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJS)
@@ -59,10 +45,10 @@ $(TARGET_LIB): $(OBJS)
 $(TARGET): $(OBJS)
 	@mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) $(OBJS) -lm -o $@
-	@echo "Executable built: $(TARGET) (port 8080 → 4308)"
+	@echo "Executable built: $(TARGET)"
 
 # Compile object files
-$(OBJ_DIR)/%.o: $(PROJECT_DIR)/src/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -76,6 +62,7 @@ debug: clean all
 
 test: all
 	@echo "Running tests..."
+	# Add your test commands here
 
 clean:
 	rm -rf $(PROJECT_DIR)/build
@@ -83,20 +70,32 @@ clean:
 
 # Generate compile_commands.json
 bear: clean
-	bear -- make -C $(PROJECT_DIR)
+	bear -- make all
 
 # Show project structure
 tree:
-	@tree -I 'build|*.o|*.a' --dirsfirst
+	@tree -I 'build|*.o|*.a|*.so' --dirsfirst $(PROJECT_DIR)
+
+# Show found source files
+sources:
+	@echo "Found source files:"
+	@echo "$(SRCS)" | tr ' ' '\n'
+
+# Show object files
+objects:
+	@echo "Object files to build:"
+	@echo "$(OBJS)" | tr ' ' '\n'
 
 # Help
 help:
 	@echo "Available targets:"
-	@echo "  all     - Build everything (default)"
-	@echo "  lib     - Build static library only"
-	@echo "  run     - Build and run the executable"
-	@echo "  debug   - Build with debug symbols"
-	@echo "  test    - Run tests"
-	@echo "  clean   - Remove build files"
-	@echo "  bear    - Generate compile_commands.json"
-	@echo "  tree    - Show project structure"
+	@echo "  all      - Build everything (default)"
+	@echo "  lib      - Build static library only"
+	@echo "  run      - Build and run the executable"
+	@echo "  debug    - Build with debug symbols"
+	@echo "  test     - Run tests"
+	@echo "  clean    - Remove build files"
+	@echo "  bear     - Generate compile_commands.json"
+	@echo "  tree     - Show project structure"
+	@echo "  sources  - List all found source files"
+	@echo "  objects  - List all object files"

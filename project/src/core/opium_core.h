@@ -105,18 +105,24 @@ typedef struct opium_process_s     opium_process_t;
 #include "os/unix/opium_channel.h"
 #include "os/unix/opium_signal.h"
 
-#include "os/unix/process/entrails/opium_cpu.h"
-#include "os/unix/process/entrails/opium_memory.h"
-#include "os/unix/process/entrails/opium_net.h"
-#include "os/unix/process/entrails/opium_io.h"
-#include "os/unix/process/entrails/opium_fd.h"
-#include "os/unix/process/entrails/opium_cgroup.h"
+/* INTERNAL */
 
-#include "os/unix/process/opium_process_entrails.h"
-#include "os/unix/process/opium_process_channel.h"
-#include "os/unix/process/opium_process_pedigree.h"
-#include "os/unix/process/opium_process_signal.h"
-#include "os/unix/process/opium_process.h"
+#include "os/unix/process/internal/entrails/opium_cpu.h"
+#include "os/unix/process/internal/entrails/opium_memory.h"
+#include "os/unix/process/internal/entrails/opium_fd.h"
+#include "os/unix/process/internal/entrails/opium_io.h"
+
+#include "os/unix/process/internal/opium_process_entrails.h"
+#include "os/unix/process/internal/opium_process_signal.h"
+#include "os/unix/process/internal/opium_process_self.h"
+
+/* EXTERNAL */
+
+#include "os/unix/process/external/opium_process.h"
+
+/* SHARED */
+
+#include "os/unix/process/shared/opium_process_channel.h"
 
 #elif
 
@@ -127,10 +133,8 @@ typedef struct opium_process_s     opium_process_t;
 typedef struct opium_worker_s      opium_worker_t;
 typedef struct opium_master_s      opium_master_t;
 
-#include "runtime/worker/opium_worker.h"
 
 #include "runtime/master/opium_master_worker.h"
-#include "runtime/master/opium_master.h"
 
 /* Utility macros */
 #define opium_min(a,b) ((a) < (b) ? (a) : (b))
