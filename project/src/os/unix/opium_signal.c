@@ -114,7 +114,6 @@ opium_signal_handler(int signo, siginfo_t *info, void *ucontext)
       case OPIUM_SIGNAL_TERMINATE:
       case OPIUM_SIGNAL_INTERRUPT:
          opium_log_debug(signal_context->log, "Graceful shutdown requested");
-         kill(getpid(), OPIUM_SIGNAL_KILL);
          break;
 
       case OPIUM_SIGNAL_SHUTDOWN:

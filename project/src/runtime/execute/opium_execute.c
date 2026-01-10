@@ -13,6 +13,9 @@
 /* Default maximum number of simultaneous client connections */
 #define OPIUM_DEFAULT_MAX_CONNECTIONS    1000
 
+/* Default maximum number of simultaneous process */
+#define OPIUM_DEFAULT_MAX_PROCESSES      32 
+
 /* Default number of worker processes */
 #define OPIUM_DEFAULT_WORKER_PROCESSES   1
 
@@ -70,15 +73,6 @@ opium_supervisor_conf_init(opium_supervisor_conf_t *conf)
    return OPIUM_RET_OK; 
 }
 
-void master_main(void *data) {
-   printf("Master say hello!\n");
-
-   while (1) {
-
-      sleep(1);
-   }
-}
-
 void sighandler_func(int signo) {
    printf("signo: %d\n", signo);
 }
@@ -101,73 +95,24 @@ int main(int argc, void *argv[]) {
       return OPIUM_RET_ERR;
    }
 
-   opium_supervisor_conf_t conf;
+   printf("pid: %d\n", getpid());
 
-   ret = opium_supervisor_conf_init(&conf);
-   if (ret != OPIUM_RET_OK) {
+   opium_process_self_init("yes", NULL, log);
+
+   opium_shm_t shm;
+   shm.size = sizeof(opium_process_t) * OPIUM_DEFAULT_MAX_PROCESSES;
+   opium_s32_t result = opium_shm_alloc(&shm);
+   if (opium_unlikely(result != OPIUM_RET_OK)) {
       return OPIUM_RET_ERR;
    }
 
-   printf("pid: %d\n", getpid());
-   //opium_processes_init();
+   opium_master_main(OPIUM_DEFAULT_MAX_PROCESSES, log);
 
-   char *name = "yes";
-   //opium_process_spawn(name, NULL, master_main, -1, log);
-
-   /* EPOLL */
-
-   int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-   int flags = fcntl(sock_fd, F_GETFL);
-   fcntl(sock_fd, F_SETFL, flags | O_NONBLOCK);
-
-   struct sockaddr_in addr;
-   addr.sin_family = AF_INET;
-   addr.sin_port = htons(8080);
-   addr.sin_addr.s_addr = INADDR_ANY;
-
-   bind(sock_fd, (struct sockaddr*)&addr, sizeof(addr));
-   listen(sock_fd, 10);
-
-   int ep_fd = epoll_create(EPOLL_CLOEXEC);
-   struct epoll_event events[100];
-
-   struct epoll_event event_fd;
-   event_fd.events = EPOLLIN;
-   event_fd.data.fd = sock_fd; 
-
-   epoll_ctl(ep_fd, EPOLL_CTL_ADD, sock_fd, &event_fd);
-
-   opium_signal_t signal;
-   opium_signal_bind(&signal, signals);
-   opium_process_self_init(log);
-
-   /* sig */
-
-
-   /*
-      struct sigaction {
-      void (*sa_handler)(int);       // Указатель на обработчик сигнала
-      void (*sa_sigaction)(int, siginfo_t *, void *); // Альтернативный обработчик с дополнительной информацией
-      sigset_t sa_mask;              // Маска сигналов, которые будут блокироваться во время обработки
-      int sa_flags;                  // Флаги, управляющие поведением обработчика
-      void (*sa_restorer)(void);     // Обработчик для восстановления состояния (устаревший, не используется в современных системах)
-      };
-      */
-
-
+   printf("fsdfsd\n");
    while (1) {
-
-      int n = epoll_wait(ep_fd, events, 100, -1);
-
-      for (int index = 0; index < n; index++) {
-         if (events[index].data.fd == sock_fd) {
-            printf("socket!\n");
-         }
-      }
 
       sleep(1);
    }
-   //opium_process_daemonize(&proc, log);
 
    return OPIUM_RET_OK;
 }

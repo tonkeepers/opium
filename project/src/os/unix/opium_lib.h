@@ -50,6 +50,7 @@
 #include <malloc.h>         /* memalign() */
 
 #include <pthread.h>
+#include <semaphore.h>
 
 #endif /* OPIUM_LINUX_CONF_H */
 

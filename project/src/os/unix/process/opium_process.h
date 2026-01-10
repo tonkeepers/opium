@@ -17,14 +17,21 @@ struct opium_process_s {
    opium_pid_t              pid;
    opium_pid_t              ppid;
 
+   char                    *name;
+   void                    *data;
+
+   opium_process_entrails_t entrails;
    opium_process_channel_t  channel;
-   opium_process_control_t  control;
    opium_process_pedigree_t pedigree;
    opium_process_signal_t   signal;
+
+   opium_proc_state_t       state;
+
+   unsigned                 can_spawn:1;
 
    opium_log_t             *log;
 };
 
-void opium_process_self_init(opium_log_t *log);
+void opium_process_self_init(char *name, void *data, opium_log_t *log);
 
 #endif /* OPIUM_PROCESS_INCLUDED_H  */

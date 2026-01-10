@@ -92,19 +92,28 @@ typedef struct opium_connection_s  opium_connection_t;
 
 #ifdef OPIUM_LINUX 
 
+typedef struct opium_shm_s         opium_shm_t;
 typedef struct opium_whatsapp_s    opium_whatsapp_t;
 typedef struct opium_channel_s     opium_channel_t;
 typedef struct opium_signal_s      opium_signal_t;
 typedef struct opium_process_s     opium_process_t;
 
 #include "os/unix/opium_alloc.h"
+#include "os/unix/opium_shm.h"
 #include "os/unix/opium_socket.h"
 #include "os/unix/opium_whatsapp.h"
 #include "os/unix/opium_channel.h"
 #include "os/unix/opium_signal.h"
 
+#include "os/unix/process/entrails/opium_cpu.h"
+#include "os/unix/process/entrails/opium_memory.h"
+#include "os/unix/process/entrails/opium_net.h"
+#include "os/unix/process/entrails/opium_io.h"
+#include "os/unix/process/entrails/opium_fd.h"
+#include "os/unix/process/entrails/opium_cgroup.h"
+
+#include "os/unix/process/opium_process_entrails.h"
 #include "os/unix/process/opium_process_channel.h"
-#include "os/unix/process/opium_process_control.h"
 #include "os/unix/process/opium_process_pedigree.h"
 #include "os/unix/process/opium_process_signal.h"
 #include "os/unix/process/opium_process.h"
@@ -114,6 +123,14 @@ typedef struct opium_process_s     opium_process_t;
 #endif
 
 #include "opium_connection.h"
+
+typedef struct opium_worker_s      opium_worker_t;
+typedef struct opium_master_s      opium_master_t;
+
+#include "runtime/worker/opium_worker.h"
+
+#include "runtime/master/opium_master_worker.h"
+#include "runtime/master/opium_master.h"
 
 /* Utility macros */
 #define opium_min(a,b) ((a) < (b) ? (a) : (b))

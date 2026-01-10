@@ -8,6 +8,7 @@ CORE_DIR     := $(PROJECT_DIR)/src/core
 
 OS_DIR       := $(PROJECT_DIR)/src/os/unix
 UNIX_PROCESS_DIR       := $(PROJECT_DIR)/src/os/unix/process
+UNIX_PROCESS_DIR1       := $(PROJECT_DIR)/src/os/unix/process/entrails
 
 SUPERVISOR_DIR := $(PROJECT_DIR)/src/runtime/execute
 MASTER_DIR     := $(PROJECT_DIR)/src/runtime/master
@@ -17,7 +18,7 @@ OBJ_DIR      := $(PROJECT_DIR)/build/obj
 BIN_DIR      := $(PROJECT_DIR)/build/bin
 LIB_DIR      := $(PROJECT_DIR)/build/lib
 
-CFLAGS  := -Wall -Wextra -O3 -fPIC -march=native \
+CFLAGS  := -Wall -Wextra -O3 -fPIC -march=native -D_GNU_SOURCE\
            -I$(PROJECT_DIR) \
            -I$(PROJECT_DIR)/include \
            -I$(PROJECT_DIR)/src \
@@ -34,8 +35,9 @@ MASTER_SRCS     := $(wildcard $(MASTER_DIR)/*.c)
 WORKER_SRCS     := $(wildcard $(WORKER_DIR)/*.c)
 OS_SRCS         := $(wildcard $(OS_DIR)/*.c)
 PROCESS_SRCS    := $(wildcard $(UNIX_PROCESS_DIR)/*.c)
+PROCESS_SRCS1    := $(wildcard $(UNIX_PROCESS_DIR1)/*.c)
 
-SRCS := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS) $(PROCESS_SRCS)
+SRCS := $(CORE_SRCS) $(SUPERVISOR_SRCS) $(MASTER_SRCS) $(WORKER_SRCS) $(OS_SRCS) $(PROCESS_SRCS) $(PROCESS_SRCS1)
 OBJS := $(SRCS:$(PROJECT_DIR)/src/%.c=$(OBJ_DIR)/%.o)
 
 # Main application file (entry point)

@@ -1,5 +1,39 @@
 #include "core/opium_core.h"   
 
+   opium_pid_t
+opium_process_spawn(opium_process_pedigree_t *pedigree, char *name, void *data, opium_process_main_t main,
+      opium_log_t *log)
+{
+
+   opium_channel_t channel;
+   if (opium_channel_init(&channel, log) != OPIUM_RET_OK) {
+      opium_log_err(log, "Failed to allocate channel!\n");
+      return OPIUM_RET_ERR;
+   }
+
+   opium_pid_t pid = fork();
+
+   switch (pid) {
+      case -1:
+         opium_log_err(log, "Failed to fork()\n");
+         return OPIUM_INVALID_PID;
+      case 0:
+         /* Children */ 
+         opium_log_debug(log, "parent pid: %d\n", getpid());
+         opium_channel_fetch(&channel, OPIUM_CHANNEL_PARENT);
+
+         opium_process_self_init(name, data, log);
+         break;
+      default:
+         /* Parent */ 
+
+         opium_channel_fetch(&channel, OPIUM_CHANNEL_CHILD);
+         break;
+   }
+
+   return 0;
+}
+
 /*
    opium_pid_t
    opium_process_spawn(char *name, void *data, opium_proc_func_t func, opium_log_t *log)

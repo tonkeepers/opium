@@ -1,0 +1,6 @@
+#ifndef OPIUM_SHMTX_INCLUDE_H
+#define OPIUM_SHMTX_INCLUDE_H
+
+
+
+#endif /* OPIUM_SHMTX_INCLUDE_H */
